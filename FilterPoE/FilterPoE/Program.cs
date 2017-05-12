@@ -64,11 +64,20 @@ class Program
             // Write the string to a file.
             System.IO.StreamWriter file = new System.IO.StreamWriter("D:\\filtro.txt");
 
+
+            Console.Write("Inserte valor minimo de mapas: ");
+            double VmMapa = new double();
+            VmMapa = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Inserte valor T1 de mapas: ");
+            double VT1Mapa = new double();
+            VT1Mapa = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine();
+
             for (int i = 0; i < maps.lines.Count; i++)
             {
-                if (maps.lines[i].chaosValue > 30)
+                if (maps.lines[i].chaosValue >= VT1Mapa)
                 {
-                    file.WriteLine("Show # Maps:Unique - T1 > 30 chaos");
+                    file.WriteLine("Show # Maps:Unique - T1 > " + VT1Mapa + " chaos");
                     file.WriteLine("    Class Maps");
                     file.WriteLine("    BaseType \"" + maps.lines[i].baseType + "\"");
                     file.WriteLine("    Rarity Unique");
@@ -80,9 +89,9 @@ class Program
                     file.WriteLine("    PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop");
                     file.WriteLine("");
                 }
-                if (maps.lines[i].chaosValue > 10)
+                if (maps.lines[i].chaosValue >= VmMapa && maps.lines[i].chaosValue < VT1Mapa)
                 {
-                    file.WriteLine("Show # Maps:Unique > 10 chaos");
+                    file.WriteLine("Show # Maps:Unique > " + VmMapa + " chaos");
                     file.WriteLine("    Class Maps");
                     file.WriteLine("    BaseType \"" + maps.lines[i].baseType + "\"");
                     file.WriteLine("    Rarity Unique");
@@ -94,6 +103,7 @@ class Program
                 }
             }
             file.Close();
+            Console.WriteLine("Creacion del Filtro Terminada");
             Console.ReadKey();
         }
     }
