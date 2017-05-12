@@ -59,14 +59,33 @@ class Program
         {
             WebClient n = new WebClient();
             var json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueMapOverview?league=tmpstandard");
-
-            ///Console.WriteLine(json);
             RootObject maps = JsonConvert.DeserializeObject<RootObject>(json);
+           
+            // Write the string to a file.
+            System.IO.StreamWriter file = new System.IO.StreamWriter("D:\\filtro.txt");
+
             for (int i = 0; i < maps.lines.Count; i++)
             {
-                Console.Write("Nombre del mapa: "); Console.Write(maps.lines[i].name); Console.Write(", Base del mapa: "); Console.Write(maps.lines[i].baseType); Console.Write(", Valor en chaos del mapa: "); Console.WriteLine(maps.lines[i].chaosValue);
+                if (maps.lines[i].chaosValue > 10)
+                {
+
+                    Console.Write("Nombre del mapa: ");
+                    Console.Write(maps.lines[i].name);
+                    Console.Write(", Base del mapa: ");
+                    Console.Write(maps.lines[i].baseType);
+                    Console.Write(", Valor en chaos del mapa: ");
+                    Console.WriteLine(maps.lines[i].chaosValue);
+                    file.Write("Nombre del mapa: ");
+                    file.Write(maps.lines[i].name);
+                    file.Write(", Base del mapa: ");
+                    file.Write(maps.lines[i].baseType);
+                    file.Write(", Valor en chaos del mapa: ");
+                    file.WriteLine(maps.lines[i].chaosValue);
+
+                }
             }
             Console.ReadKey();
+            file.Close();
         }
     }
 }
