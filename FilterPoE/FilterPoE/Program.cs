@@ -66,26 +66,35 @@ class Program
 
             for (int i = 0; i < maps.lines.Count; i++)
             {
+                if (maps.lines[i].chaosValue > 30)
+                {
+                    file.WriteLine("Show # Maps:Unique - T1 > 30 chaos");
+                    file.WriteLine("    Class Maps");
+                    file.WriteLine("    BaseType \"" + maps.lines[i].baseType + "\"");
+                    file.WriteLine("    Rarity Unique");
+                    file.WriteLine("    SetFontSize 45");
+                    file.WriteLine("");
+                    file.WriteLine("    SetTextColor 175 96 37 255           # TEXTCOLOR:	 Uniques");
+                    file.WriteLine("    SetBorderColor 175 96 37 255         # BORDERCOLOR:	 Unique Item");
+                    file.WriteLine("    SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop");
+                    file.WriteLine("    PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop");
+                    file.WriteLine("");
+                }
                 if (maps.lines[i].chaosValue > 10)
                 {
-
-                    Console.Write("Nombre del mapa: ");
-                    Console.Write(maps.lines[i].name);
-                    Console.Write(", Base del mapa: ");
-                    Console.Write(maps.lines[i].baseType);
-                    Console.Write(", Valor en chaos del mapa: ");
-                    Console.WriteLine(maps.lines[i].chaosValue);
-                    file.Write("Nombre del mapa: ");
-                    file.Write(maps.lines[i].name);
-                    file.Write(", Base del mapa: ");
-                    file.Write(maps.lines[i].baseType);
-                    file.Write(", Valor en chaos del mapa: ");
-                    file.WriteLine(maps.lines[i].chaosValue);
-
+                    file.WriteLine("Show # Maps:Unique > 10 chaos");
+                    file.WriteLine("    Class Maps");
+                    file.WriteLine("    BaseType \"" + maps.lines[i].baseType + "\"");
+                    file.WriteLine("    Rarity Unique");
+                    file.WriteLine("    SetFontSize 42");
+                    file.WriteLine("");
+                    file.WriteLine("    SetBorderColor 175 96 37 255         # BORDERCOLOR:	 Unique Item");
+                    file.WriteLine("    PlayAlertSound 4 300                 # DROPSOUND: T1 maps");
+                    file.WriteLine("");
                 }
             }
-            Console.ReadKey();
             file.Close();
+            Console.ReadKey();
         }
     }
 }
