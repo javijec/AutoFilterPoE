@@ -80,6 +80,15 @@ class Program
             VT1Mapa = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine();
 
+            file.WriteLine("#===============================================================================================================");
+            file.WriteLine("# [[1200]] Maps, fragments and labyrinth items");
+            file.WriteLine("#===============================================================================================================");
+            file.WriteLine("");
+            file.WriteLine("#------------------------------------");
+            file.WriteLine("#   [1201] Unique Maps");
+            file.WriteLine("#------------------------------------");
+
+
 
             /// Mapas Mayor valor
             file.WriteLine("Show # Maps:Unique - T1 > " + VT1Mapa + " chaos");
@@ -126,6 +135,26 @@ class Program
             file.WriteLine("Hide # Maps:Unique < " + VmMapa + " chaos");
             file.WriteLine("    Class Maps");
             file.WriteLine("    Rarity Unique");
+            file.WriteLine("");
+
+            file.WriteLine("#------------------------------------");
+            file.WriteLine("#   [1202] Labyrinth items, Offerings");
+            file.WriteLine("#------------------------------------");
+            file.WriteLine("");
+            file.WriteLine("Show # %TB-OfferingToTheGoddess");
+            file.WriteLine("    BaseType \"Offering to the Goddess\"");
+            file.WriteLine("    SetFontSize 42");
+            file.WriteLine("    SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text");
+            file.WriteLine("    SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight");
+            file.WriteLine("    SetBackgroundColor 180 0 0 255       # BACKGROUND:	 Fragments - valuable");
+            file.WriteLine("    PlayAlertSound 4 300                 # DROPSOUND:	 T1 maps");
+            file.WriteLine("");
+            file.WriteLine("Show");
+            file.WriteLine("    Class \"Labyrinth\"");
+            file.WriteLine("    SetFontSize 42");
+            file.WriteLine("    SetTextColor 74 230 58               # TEXTCOLOR:	 Labyrinth, Quest, Shaper Orbs");
+            file.WriteLine("    SetBorderColor 74 230 58             # BORDERCOLOR:	 Labyrinth, Quest, Shaper Orbs");
+            file.WriteLine("");
 
             file.Close();
             Console.WriteLine("Creacion del Filtro Terminada");
