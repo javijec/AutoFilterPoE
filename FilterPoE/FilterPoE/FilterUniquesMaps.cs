@@ -60,7 +60,7 @@ class Program
             RootObject maps = JsonConvert.DeserializeObject<RootObject>(json);
            
             // Write the string to a file.
-            System.IO.StreamWriter file = new System.IO.StreamWriter("D:\\filtro.txt");
+            System.IO.StreamWriter file = new System.IO.StreamWriter("C:\\Users\\javij\\Desktop\\filtro.filter");
 
 
             Console.Write("Inserte valor minimo de mapas: ");
@@ -71,35 +71,50 @@ class Program
             VT1Mapa = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine();
 
+
+            /// Mapas Mayor valor
+            file.WriteLine("Show # Maps:Unique - T1 > " + VT1Mapa + " chaos");
+            file.WriteLine("    Class Maps");
+            file.Write("    BaseType ");
             for (int i = 0; i < maps.lines.Count; i++)
             {
                 if (maps.lines[i].chaosValue >= VT1Mapa)
                 {
-                    file.WriteLine("Show # Maps:Unique - T1 > " + VT1Mapa + " chaos");
-                    file.WriteLine("    Class Maps");
-                    file.WriteLine("    BaseType \"" + maps.lines[i].baseType + "\"");
-                    file.WriteLine("    Rarity Unique");
-                    file.WriteLine("    SetFontSize 45");
-                    file.WriteLine("");
-                    file.WriteLine("    SetTextColor 175 96 37 255           # TEXTCOLOR:	 Uniques");
-                    file.WriteLine("    SetBorderColor 175 96 37 255         # BORDERCOLOR:	 Unique Item");
-                    file.WriteLine("    SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop");
-                    file.WriteLine("    PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop");
-                    file.WriteLine("");
-                }
-                if (maps.lines[i].chaosValue >= VmMapa && maps.lines[i].chaosValue < VT1Mapa)
-                {
-                    file.WriteLine("Show # Maps:Unique > " + VmMapa + " chaos");
-                    file.WriteLine("    Class Maps");
-                    file.WriteLine("    BaseType \"" + maps.lines[i].baseType + "\"");
-                    file.WriteLine("    Rarity Unique");
-                    file.WriteLine("    SetFontSize 42");
-                    file.WriteLine("");
-                    file.WriteLine("    SetBorderColor 175 96 37 255         # BORDERCOLOR:	 Unique Item");
-                    file.WriteLine("    PlayAlertSound 4 300                 # DROPSOUND: T1 maps");
-                    file.WriteLine("");
+                    file.Write("\"" + maps.lines[i].baseType + "\" ");
                 }
             }
+            file.WriteLine(" ");
+            file.WriteLine("    Rarity Unique");
+            file.WriteLine("    SetFontSize 45");
+            file.WriteLine("");
+            file.WriteLine("    SetTextColor 175 96 37 255           # TEXTCOLOR:	 Uniques");
+            file.WriteLine("    SetBorderColor 175 96 37 255         # BORDERCOLOR:	 Unique Item");
+            file.WriteLine("    SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop");
+            file.WriteLine("    PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop");
+            file.WriteLine("");
+
+
+            file.WriteLine("Show # Maps:Unique > " + VmMapa + " chaos");
+            file.WriteLine("    Class Maps");
+            file.Write("    BaseType ");
+            for (int i = 0; i < maps.lines.Count; i++)
+            {
+                if (maps.lines[i].chaosValue >= VmMapa && maps.lines[i].chaosValue < VT1Mapa)
+                {
+                    file.Write("\"" + maps.lines[i].baseType + "\" ");
+
+                }
+            }
+            file.WriteLine(" ");
+            file.WriteLine("    Rarity Unique");
+            file.WriteLine("    SetFontSize 42");
+            file.WriteLine("");
+            file.WriteLine("    SetBorderColor 175 96 37 255         # BORDERCOLOR:	 Unique Item");
+            file.WriteLine("    PlayAlertSound 4 300                 # DROPSOUND: T1 maps");
+            file.WriteLine("");
+
+
+
             file.Close();
             Console.WriteLine("Creacion del Filtro Terminada");
             Console.ReadKey();
