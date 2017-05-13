@@ -5,47 +5,38 @@ using Newtonsoft.Json;
 
 public class Sparkline
 {
-    public List<double> data { get; set; }
-    public double totalChange { get; set; }
-}
-
-public class ExplicitModifier
-{
-    public string text { get; set; }
-    public bool optional { get; set; }
+    public List<object> Data { get; set; }
+    public double TotalChange { get; set; }
 }
 
 public class Line
 {
-    public int id { get; set; }
-    public string name { get; set; }
-    public string icon { get; set; }
-    public int mapTier { get; set; }
-    public int levelRequired { get; set; }
-    public string baseType { get; set; }
-    public int stackSize { get; set; }
-    public object variant { get; set; }
-    public object prophecyText { get; set; }
-    public object artFilename { get; set; }
-    public int links { get; set; }
-    public int itemClass { get; set; }
-    public Sparkline sparkline { get; set; }
-    public List<object> implicitModifiers { get; set; }
-    public List<ExplicitModifier> explicitModifiers { get; set; }
-    public string flavourText { get; set; }
-    public string itemType { get; set; }
-    public double chaosValue { get; set; }
-    public double exaltedValue { get; set; }
-    public int count { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Icon { get; set; }
+    public int MapTier { get; set; }
+    public int LevelRequired { get; set; }
+    public string BaseType { get; set; }
+    public int StackSize { get; set; }
+    public object Variant { get; set; }
+    public object ProphecyText { get; set; }
+    public object ArtFilename { get; set; }
+    public int Links { get; set; }
+    public int ItemClass { get; set; }
+    public Sparkline Sparkline { get; set; }
+    public List<object> ImplicitModifiers { get; set; }
+    public List<object> ExplicitModifiers { get; set; }
+    public string FlavourText { get; set; }
+    public string ItemType { get; set; }
+    public double ChaosValue { get; set; }
+    public double ExaltedValue { get; set; }
+    public int Count { get; set; }
 }
 
 public class RootObject
 {
     public List<Line> lines { get; set; }
 }
-
-
-
 
 
 
@@ -57,12 +48,30 @@ class Program
         {
             WebClient n = new WebClient();
             var json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueMapOverview?league=tmpstandard");
-            RootObject maps = JsonConvert.DeserializeObject<RootObject>(json);
-           
-            // Write the string to a file.
-            System.IO.StreamWriter file = new System.IO.StreamWriter("C:\\Users\\javij\\Desktop\\filtro.filter");
+            RootObject UMap = JsonConvert.DeserializeObject<RootObject>(json);
+            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetEssenceOverview?league=tmpstandard");
+            RootObject Essence = JsonConvert.DeserializeObject<RootObject>(json);
+            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetDivinationCardsOverview?league=tmpstandard");
+            RootObject Cards = JsonConvert.DeserializeObject<RootObject>(json);
+            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueJewelOverview?league=tmpstandard");
+            RootObject UJewel = JsonConvert.DeserializeObject<RootObject>(json);
+            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueFlaskOverview?league=tmpstandard");
+            RootObject UFlask = JsonConvert.DeserializeObject<RootObject>(json);
+            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueWeaponOverview?league=tmpstandard");
+            RootObject UWeapon = JsonConvert.DeserializeObject<RootObject>(json);
+            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueArmourOverview?league=tmpstandard");
+            RootObject UArmor = JsonConvert.DeserializeObject<RootObject>(json);
+            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueAccessoryOverview?league=tmpstandard");
+            RootObject UAccessory = JsonConvert.DeserializeObject<RootObject>(json);
+            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetMapOverview?league=tmpstandard");
+            RootObject Map = JsonConvert.DeserializeObject<RootObject>(json);
 
+            //Eleccion de direcctorio y nombre del filtro.
+            var dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            dir = dir.Replace(@"\", @"\\");
+            System.IO.StreamWriter file = new System.IO.StreamWriter(dir + "\\filtro.filter");
 
+            ///rango de valores para seleccion de Mapas
             Console.Write("Inserte valor minimo de mapas: ");
             double VmMapa = new double();
             VmMapa = Convert.ToDouble(Console.ReadLine());
@@ -76,11 +85,11 @@ class Program
             file.WriteLine("Show # Maps:Unique - T1 > " + VT1Mapa + " chaos");
             file.WriteLine("    Class Maps");
             file.Write("    BaseType ");
-            for (int i = 0; i < maps.lines.Count; i++)
+            for (int i = 0; i < UMap.lines.Count; i++)
             {
-                if (maps.lines[i].chaosValue >= VT1Mapa)
+                if (UMap.lines[i].ChaosValue >= VT1Mapa)
                 {
-                    file.Write("\"" + maps.lines[i].baseType + "\" ");
+                    file.Write("\"" + UMap.lines[i].BaseType + "\" ");
                 }
             }
             file.WriteLine(" ");
@@ -93,15 +102,15 @@ class Program
             file.WriteLine("    PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop");
             file.WriteLine("");
 
-
+            /// Mapas Bajo Valor
             file.WriteLine("Show # Maps:Unique > " + VmMapa + " chaos");
             file.WriteLine("    Class Maps");
             file.Write("    BaseType ");
-            for (int i = 0; i < maps.lines.Count; i++)
+            for (int i = 0; i < UMap.lines.Count; i++)
             {
-                if (maps.lines[i].chaosValue >= VmMapa && maps.lines[i].chaosValue < VT1Mapa)
+                if (UMap.lines[i].ChaosValue >= VmMapa && UMap.lines[i].ChaosValue < VT1Mapa)
                 {
-                    file.Write("\"" + maps.lines[i].baseType + "\" ");
+                    file.Write("\"" + UMap.lines[i].BaseType + "\" ");
 
                 }
             }
@@ -113,7 +122,10 @@ class Program
             file.WriteLine("    PlayAlertSound 4 300                 # DROPSOUND: T1 maps");
             file.WriteLine("");
 
-
+            ///Mapas Ocultos
+            file.WriteLine("Hide # Maps:Unique < " + VmMapa + " chaos");
+            file.WriteLine("    Class Maps");
+            file.WriteLine("    Rarity Unique");
 
             file.Close();
             Console.WriteLine("Creacion del Filtro Terminada");
