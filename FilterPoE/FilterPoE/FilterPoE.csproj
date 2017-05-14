@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsSparkline.cs" />
+    <Compile Include="clsLine.cs" />
+    <Compile Include="clsObjetos.cs" />
     <Compile Include="FilterUniquesMaps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
