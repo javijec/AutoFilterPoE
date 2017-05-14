@@ -131,7 +131,8 @@
             this.Controls.Add(this.Run);
             this.Controls.Add(this.cB_UMaps);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Filtro mapas";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.vChaosmUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vChaosT1UM)).EndInit();
             this.ResumeLayout(false);

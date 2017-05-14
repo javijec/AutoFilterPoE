@@ -33,9 +33,7 @@ namespace WindowsFormsApp1
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 dir = fbd.SelectedPath;
-                MessageBox.Show(dir);
                 dir = dir.Replace(@"\", @"\\");
-                MessageBox.Show(dir);
             }
             else
             {
@@ -125,8 +123,9 @@ namespace WindowsFormsApp1
             Application.Exit();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
-
-
-}
+        }
+    }
 }
