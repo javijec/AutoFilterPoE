@@ -127,5 +127,35 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void RgbUMaps(object sender, EventArgs e)
+        {
+            RGBUM1.Value = trackBar_RGB1.Value;
+            RGBUM2.Value = trackBar_RGB2.Value;
+            RGBUM3.Value = trackBar_RGB3.Value;
+            numericUpDown1.Value = trackBar1.Value;
+            numericUpDown2.Value = trackBar2.Value;
+            numericUpDown3.Value = trackBar3.Value;
+            numericUpDown4.Value = trackBar4.Value;
+            numericUpDown5.Value = trackBar5.Value;
+            numericUpDown6.Value = trackBar6.Value;
+            numericUpDown8.Value = trackBar8.Value;
+            numericUpDown7.Value = trackBar97.Value;
+        }
+
+        private void RgbUMaps2(object sender, EventArgs e)
+        {
+            trackBar_RGB1.Value = Convert.ToInt32(RGBUM1.Value);
+            trackBar_RGB2.Value = Convert.ToInt32(RGBUM2.Value);
+            trackBar_RGB3.Value = Convert.ToInt32(RGBUM3.Value);
+            trackBar1.Value = Convert.ToInt32(numericUpDown1.Value);
+            trackBar2.Value = Convert.ToInt32(numericUpDown2.Value);
+            trackBar3.Value = Convert.ToInt32(numericUpDown3.Value);
+            trackBar4.Value = Convert.ToInt32(numericUpDown4.Value);
+            trackBar5.Value = Convert.ToInt32(numericUpDown5.Value);
+            trackBar6.Value = Convert.ToInt32(numericUpDown6.Value);
+            trackBar8.Value = Convert.ToInt32(numericUpDown8.Value);
+            trackBar97.Value = Convert.ToInt32(numericUpDown7.Value);
+        }
     }
 }
