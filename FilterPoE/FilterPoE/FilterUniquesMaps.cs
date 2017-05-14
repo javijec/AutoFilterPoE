@@ -49,22 +49,7 @@ class Program
             WebClient n = new WebClient();
             var json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueMapOverview?league=tmpstandard");
             RootObject UMap = JsonConvert.DeserializeObject<RootObject>(json);
-            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetEssenceOverview?league=tmpstandard");
-            RootObject Essence = JsonConvert.DeserializeObject<RootObject>(json);
-            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetDivinationCardsOverview?league=tmpstandard");
-            RootObject Cards = JsonConvert.DeserializeObject<RootObject>(json);
-            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueJewelOverview?league=tmpstandard");
-            RootObject UJewel = JsonConvert.DeserializeObject<RootObject>(json);
-            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueFlaskOverview?league=tmpstandard");
-            RootObject UFlask = JsonConvert.DeserializeObject<RootObject>(json);
-            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueWeaponOverview?league=tmpstandard");
-            RootObject UWeapon = JsonConvert.DeserializeObject<RootObject>(json);
-            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueArmourOverview?league=tmpstandard");
-            RootObject UArmor = JsonConvert.DeserializeObject<RootObject>(json);
-            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetUniqueAccessoryOverview?league=tmpstandard");
-            RootObject UAccessory = JsonConvert.DeserializeObject<RootObject>(json);
-            json = n.DownloadString("http://poeninja.azureedge.net/api/Data/GetMapOverview?league=tmpstandard");
-            RootObject Map = JsonConvert.DeserializeObject<RootObject>(json);
+
 
             //Eleccion de direcctorio y nombre del filtro.
             var dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
@@ -80,10 +65,6 @@ class Program
             VT1Mapa = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine();
 
-            file.WriteLine("#===============================================================================================================");
-            file.WriteLine("# [[1200]] Maps, fragments and labyrinth items");
-            file.WriteLine("#===============================================================================================================");
-            file.WriteLine("");
             file.WriteLine("#------------------------------------");
             file.WriteLine("#   [1201] Unique Maps");
             file.WriteLine("#------------------------------------");
@@ -137,24 +118,6 @@ class Program
             file.WriteLine("    Rarity Unique");
             file.WriteLine("");
 
-            file.WriteLine("#------------------------------------");
-            file.WriteLine("#   [1202] Labyrinth items, Offerings");
-            file.WriteLine("#------------------------------------");
-            file.WriteLine("");
-            file.WriteLine("Show # %TB-OfferingToTheGoddess");
-            file.WriteLine("    BaseType \"Offering to the Goddess\"");
-            file.WriteLine("    SetFontSize 42");
-            file.WriteLine("    SetTextColor 0 0 0 255               # TEXTCOLOR:	 Cosmetic: Black Text");
-            file.WriteLine("    SetBorderColor 0 0 0                 # BORDERCOLOR:	 Cosmetic: Neutral Highlight");
-            file.WriteLine("    SetBackgroundColor 180 0 0 255       # BACKGROUND:	 Fragments - valuable");
-            file.WriteLine("    PlayAlertSound 4 300                 # DROPSOUND:	 T1 maps");
-            file.WriteLine("");
-            file.WriteLine("Show");
-            file.WriteLine("    Class \"Labyrinth\"");
-            file.WriteLine("    SetFontSize 42");
-            file.WriteLine("    SetTextColor 74 230 58               # TEXTCOLOR:	 Labyrinth, Quest, Shaper Orbs");
-            file.WriteLine("    SetBorderColor 74 230 58             # BORDERCOLOR:	 Labyrinth, Quest, Shaper Orbs");
-            file.WriteLine("");
 
             file.Close();
             Console.WriteLine("Creacion del Filtro Terminada");
