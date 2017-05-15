@@ -9,19 +9,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using Newtonsoft.Json;
+using System.Windows;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
 
+
         public Form1()
         {
             InitializeComponent();
-                   
+            Bitmap b;
+            b = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Image = (Image)b;
+            Graphics g = Graphics.FromImage(b);
+            Color myColor = Color.FromArgb(trackBar4.Value, trackBar5.Value, trackBar6.Value);
+            SolidBrush myBrush = new SolidBrush(myColor);
+            g.FillRectangle(myBrush, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
+            label7.ForeColor = Color.FromArgb(trackBar_RGB1.Value, trackBar_RGB2.Value, trackBar_RGB3.Value);
+            label7.BackColor = Color.FromArgb(trackBar4.Value, trackBar5.Value, trackBar6.Value);
         }
 
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        private void FolderBrowserDialog1_HelpRequest(object sender, EventArgs e)
         {
         }
 
@@ -39,8 +49,6 @@ namespace WindowsFormsApp1
             {
                 dir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             }
-
-            MessageBox.Show(dir);
 
             if (cB_UMaps.Checked == true)
             {
@@ -75,7 +83,7 @@ namespace WindowsFormsApp1
                 file.WriteLine("    Rarity Unique");
                 file.WriteLine("    SetFontSize 45");
                 file.WriteLine("");
-                file.WriteLine("    SetTextColor 175 96 37 255           # TEXTCOLOR:	 Uniques");
+                file.WriteLine("    SetTextColor " + trackBar_RGB1.Value + " " + trackBar_RGB2.Value + " " + trackBar_RGB3.Value + " 255           # TEXTCOLOR:	 Uniques");
                 file.WriteLine("    SetBorderColor 175 96 37 255         # BORDERCOLOR:	 Unique Item");
                 file.WriteLine("    SetBackgroundColor 255 255 255 255   # BACKGROUND:	 T1 Global High Value Drop");
                 file.WriteLine("    PlayAlertSound 6 300                 # DROPSOUND:	 T1 Drop");
@@ -123,11 +131,6 @@ namespace WindowsFormsApp1
             Application.Exit();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void RgbUMaps(object sender, EventArgs e)
         {
             RGBUM1.Value = trackBar_RGB1.Value;
@@ -141,6 +144,18 @@ namespace WindowsFormsApp1
             numericUpDown6.Value = trackBar6.Value;
             numericUpDown8.Value = trackBar8.Value;
             numericUpDown7.Value = trackBar97.Value;
+            Bitmap b;
+            b = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Image = (Image)b;
+            Graphics g = Graphics.FromImage(b);
+            Color myColor = Color.FromArgb(trackBar1.Value, trackBar2.Value, trackBar3.Value);
+            SolidBrush myBrush = new SolidBrush(myColor);
+            g.FillRectangle(myBrush, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
+            Color myColor2 = Color.FromArgb(trackBar4.Value, trackBar5.Value, trackBar6.Value);
+            SolidBrush myBrush2 = new SolidBrush(myColor2);
+            g.FillRectangle(myBrush2, new Rectangle(0+5, 0+5, pictureBox1.Width-10, pictureBox1.Height-10));
+            label7.ForeColor = Color.FromArgb(trackBar_RGB1.Value, trackBar_RGB2.Value, trackBar_RGB3.Value);
+            label7.BackColor = Color.FromArgb(trackBar4.Value, trackBar5.Value, trackBar6.Value);
         }
 
         private void RgbUMaps2(object sender, EventArgs e)
@@ -156,6 +171,18 @@ namespace WindowsFormsApp1
             trackBar6.Value = Convert.ToInt32(numericUpDown6.Value);
             trackBar8.Value = Convert.ToInt32(numericUpDown8.Value);
             trackBar97.Value = Convert.ToInt32(numericUpDown7.Value);
+            Bitmap b;
+            b = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Image = (Image)b;
+            Graphics g = Graphics.FromImage(b);
+            Color myColor = Color.FromArgb(trackBar1.Value, trackBar2.Value, trackBar3.Value);
+            SolidBrush myBrush = new SolidBrush(myColor);
+            g.FillRectangle(myBrush, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
+            Color myColor2 = Color.FromArgb(trackBar4.Value, trackBar5.Value, trackBar6.Value);
+            SolidBrush myBrush2 = new SolidBrush(myColor2);
+            g.FillRectangle(myBrush2, new Rectangle(0 + 5, 0 + 5, pictureBox1.Width - 10, pictureBox1.Height - 10));
+            label7.ForeColor = Color.FromArgb(trackBar_RGB1.Value,trackBar_RGB2.Value,trackBar_RGB3.Value);
+            label7.BackColor = Color.FromArgb(trackBar4.Value, trackBar5.Value, trackBar6.Value);
         }
     }
 }

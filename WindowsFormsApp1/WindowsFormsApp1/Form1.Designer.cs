@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cB_UMaps = new System.Windows.Forms.CheckBox();
             this.Run = new System.Windows.Forms.Button();
             this.vChaosmUM = new System.Windows.Forms.NumericUpDown();
@@ -41,6 +42,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.trackBar7 = new System.Windows.Forms.TrackBar();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,12 +75,16 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.vChaosmUM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vChaosT1UM)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar97)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
@@ -98,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_RGB3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RGBUM1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // cB_UMaps
@@ -112,7 +122,7 @@
             // 
             // Run
             // 
-            this.Run.Location = new System.Drawing.Point(546, 519);
+            this.Run.Location = new System.Drawing.Point(458, 519);
             this.Run.Name = "Run";
             this.Run.Size = new System.Drawing.Size(75, 23);
             this.Run.TabIndex = 1;
@@ -164,7 +174,7 @@
             // 
             // Salir
             // 
-            this.Salir.Location = new System.Drawing.Point(713, 519);
+            this.Salir.Location = new System.Drawing.Point(911, 519);
             this.Salir.Name = "Salir";
             this.Salir.Size = new System.Drawing.Size(75, 23);
             this.Salir.TabIndex = 5;
@@ -174,7 +184,7 @@
             // 
             // folderBrowserDialog1
             // 
-            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
+            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.FolderBrowserDialog1_HelpRequest);
             // 
             // tabControl1
             // 
@@ -216,6 +226,10 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.trackBar7);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.pictureBox1);
+            this.tabPage4.Controls.Add(this.label8);
             this.tabPage4.Controls.Add(this.label6);
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.label4);
@@ -250,10 +264,51 @@
             this.tabPage4.Text = "Mapas T1";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // trackBar7
+            // 
+            this.trackBar7.Location = new System.Drawing.Point(730, 96);
+            this.trackBar7.Maximum = 45;
+            this.trackBar7.Minimum = 18;
+            this.trackBar7.Name = "trackBar7";
+            this.trackBar7.Size = new System.Drawing.Size(104, 45);
+            this.trackBar7.TabIndex = 45;
+            this.trackBar7.Value = 32;
+            this.trackBar7.ValueChanged += new System.EventHandler(this.RgbUMaps);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.Location = new System.Drawing.Point(609, 220);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(178, 64);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "label7";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(530, 209);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(334, 83);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(748, 80);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Text Size";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(571, 66);
+            this.label6.Location = new System.Drawing.Point(571, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 7;
@@ -262,7 +317,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(398, 66);
+            this.label5.Location = new System.Drawing.Point(398, 80);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 7;
@@ -271,7 +326,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 66);
+            this.label4.Location = new System.Drawing.Point(229, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 13);
             this.label4.TabIndex = 7;
@@ -280,7 +335,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 66);
+            this.label3.Location = new System.Drawing.Point(63, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 7;
@@ -290,11 +345,10 @@
             // 
             this.trackBar97.AllowDrop = true;
             this.trackBar97.Location = new System.Drawing.Point(530, 96);
-            this.trackBar97.Maximum = 255;
+            this.trackBar97.Maximum = 8;
             this.trackBar97.Name = "trackBar97";
             this.trackBar97.Size = new System.Drawing.Size(94, 45);
             this.trackBar97.TabIndex = 5;
-            this.trackBar97.TickFrequency = 5;
             this.trackBar97.ValueChanged += new System.EventHandler(this.RgbUMaps);
             // 
             // trackBar4
@@ -336,11 +390,11 @@
             // 
             this.trackBar8.AllowDrop = true;
             this.trackBar8.Location = new System.Drawing.Point(529, 147);
-            this.trackBar8.Maximum = 255;
+            this.trackBar8.Maximum = 300;
             this.trackBar8.Name = "trackBar8";
             this.trackBar8.Size = new System.Drawing.Size(94, 45);
             this.trackBar8.TabIndex = 5;
-            this.trackBar8.TickFrequency = 5;
+            this.trackBar8.TickFrequency = 20;
             this.trackBar8.ValueChanged += new System.EventHandler(this.RgbUMaps);
             // 
             // numericUpDown3
@@ -376,13 +430,14 @@
             this.trackBar_RGB1.Size = new System.Drawing.Size(94, 45);
             this.trackBar_RGB1.TabIndex = 5;
             this.trackBar_RGB1.TickFrequency = 5;
+            this.trackBar_RGB1.Value = 255;
             this.trackBar_RGB1.ValueChanged += new System.EventHandler(this.RgbUMaps);
             // 
             // numericUpDown8
             // 
             this.numericUpDown8.Location = new System.Drawing.Point(629, 158);
             this.numericUpDown8.Maximum = new decimal(new int[] {
-            255,
+            300,
             0,
             0,
             0});
@@ -426,6 +481,11 @@
             this.RGBUM3.Name = "RGBUM3";
             this.RGBUM3.Size = new System.Drawing.Size(48, 20);
             this.RGBUM3.TabIndex = 6;
+            this.RGBUM3.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.RGBUM3.ValueChanged += new System.EventHandler(this.RgbUMaps2);
             // 
             // numericUpDown2
@@ -461,6 +521,7 @@
             this.trackBar_RGB2.Size = new System.Drawing.Size(94, 45);
             this.trackBar_RGB2.TabIndex = 5;
             this.trackBar_RGB2.TickFrequency = 5;
+            this.trackBar_RGB2.Value = 255;
             this.trackBar_RGB2.ValueChanged += new System.EventHandler(this.RgbUMaps);
             // 
             // numericUpDown7
@@ -511,6 +572,11 @@
             this.RGBUM2.Name = "RGBUM2";
             this.RGBUM2.Size = new System.Drawing.Size(48, 20);
             this.RGBUM2.TabIndex = 6;
+            this.RGBUM2.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.RGBUM2.ValueChanged += new System.EventHandler(this.RgbUMaps2);
             // 
             // numericUpDown1
@@ -535,6 +601,7 @@
             this.trackBar_RGB3.Size = new System.Drawing.Size(94, 45);
             this.trackBar_RGB3.TabIndex = 5;
             this.trackBar_RGB3.TickFrequency = 5;
+            this.trackBar_RGB3.Value = 255;
             this.trackBar_RGB3.ValueChanged += new System.EventHandler(this.RgbUMaps);
             // 
             // RGBUM1
@@ -548,17 +615,19 @@
             this.RGBUM1.Name = "RGBUM1";
             this.RGBUM1.Size = new System.Drawing.Size(48, 20);
             this.RGBUM1.TabIndex = 6;
+            this.RGBUM1.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             this.RGBUM1.ValueChanged += new System.EventHandler(this.RgbUMaps2);
             // 
             // tabPage5
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(928, 314);
             this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "tabPage5";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -590,7 +659,6 @@
             this.Controls.Add(this.Run);
             this.Name = "Form1";
             this.Text = "Filtro mapas";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.vChaosmUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vChaosT1UM)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -599,6 +667,8 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar97)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
@@ -621,6 +691,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_RGB3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RGBUM1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -628,12 +699,12 @@
         #endregion
 
         private System.Windows.Forms.CheckBox cB_UMaps;
+        private System.Windows.Forms.CheckBox cB_mUM;
         private System.Windows.Forms.Button Run;
         private System.Windows.Forms.NumericUpDown vChaosmUM;
         private System.Windows.Forms.NumericUpDown vChaosT1UM;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox cB_mUM;
         private System.Windows.Forms.Button Salir;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TabControl tabControl1;
@@ -669,6 +740,12 @@
         private System.Windows.Forms.TrackBar trackBar3;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TrackBar trackBar7;
+        private System.Windows.Forms.Label label8;
     }
 }
 
